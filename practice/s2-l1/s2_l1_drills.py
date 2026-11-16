@@ -21,7 +21,12 @@ def embed(texts: list[str], client, model: str = MODEL) -> list[list[float]]:
     - The response works like a dict: response["embeddings"] is a list of vectors.
     - An empty list returns [] without calling the client.
     """
-    raise NotImplementedError  # TODO
+    if not texts:
+    	return []
+    response = client.embed(model=model, input=texts)
+    return response["embeddings"]
+
+
 
 
 # ---------------------------------------------------------------------------
